@@ -132,8 +132,8 @@ void geneseq_evolve(t_geneseq *x, t_symbol *s, long argc, t_atom *argv)
             breed(x, breeding_pop, i);
             x->current_population += 1;
         }
+        qsort(x->population, POPULATION_SIZE, sizeof(struct individual), compare_individuals);
     }
-    qsort(x->population, POPULATION_SIZE, sizeof(struct individual), compare_individuals);
 
     if (x->population[0].fitness_score == 0) outlet_bang(x->m_outlet5);
     geneseq_bang(x);
