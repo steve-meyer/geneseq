@@ -1,5 +1,5 @@
 /**
- geneseq - a genetic algotirhtm melody generator/sequencer for Max/MSP
+ geneseq - a genetic algorithm melody generator/sequencer for Max/MSP
  steve meyer
 */
 
@@ -17,11 +17,11 @@
 
 /*
  An individual improviser.
- 
+
  An individual is a member of the geneseq population. The first generation's patterns
  will be generated randomly from the valid genes. Successive generations are bred
  from previous generations.
- 
+
  All improvisors are scored. The fitness score is an indication of how well the improviser
  has adapted/resolved to the target melody after each evolution/breeding. The random score is
  "in the right place at the right time." Did the improviser luck out and get the right gig?
@@ -102,7 +102,7 @@ void geneseq_bang(t_geneseq *x)
 
 /*
  Evolve the population by one generation towards convergence with the target melody.
- 
+
  The population is always in a sorted state. Identify the fittest 10% of the population
  to move to the next generation. Then use the fittest 50% of the population to breed
  new children to refill the remaining population. Finally resort the population and
@@ -116,7 +116,7 @@ void geneseq_evolve(t_geneseq *x, t_symbol *s, long argc, t_atom *argv)
         int num_fittest = ceil((x->current_population * 10) / 100.0);
         for (int i = 0; i < num_fittest; i++)
             x->population[i].random_score = random() / (double) RAND_MAX;
-        
+
         int breeding_pop = x->current_population / 2;
         int num_children = x->current_population * 2;
         int max = num_children;
@@ -125,7 +125,7 @@ void geneseq_evolve(t_geneseq *x, t_symbol *s, long argc, t_atom *argv)
             num_children = POPULATION_SIZE - num_fittest;
             max = POPULATION_SIZE;
         }
-        
+
         x->current_population = num_fittest;
         for (int i = num_fittest; i < max; i++)
         {
@@ -142,7 +142,7 @@ void geneseq_evolve(t_geneseq *x, t_symbol *s, long argc, t_atom *argv)
 
 /*
  Given a set of parents breed a new individual for the given child index.
- 
+
  Breeding population is a count of the number of eligible parents to randomly choose from.
  Once two parent indices are chosen the child's new pattern is based on a random selection
  of parent 1's or parent 2's genes. 10% of the time the genes are the result of a
@@ -154,7 +154,7 @@ void breed(t_geneseq *x, int breeding_pop, int child_idx)
     struct individual parent1 = x->population[parent_indices[0]];
     struct individual parent2 = x->population[parent_indices[1]];
     struct individual *child = &x->population[child_idx];
-    
+
     int score = 0;
     int step_val;
     for (int step = 0; step < SEQ_STEPS; step++)
@@ -164,11 +164,11 @@ void breed(t_geneseq *x, int breeding_pop, int child_idx)
             step_val = atom_getlong(parent1.pattern+step);
         else
             step_val = atom_getlong(parent2.pattern+step);
-        
+
         // About 10% of the time, mutations occur
         if (rand() % 100 > 90)
             step_val = random() % (GENES + 1);
-        
+
         atom_setlong(child->pattern+step, step_val);
         if (step_val != atom_getlong(x->target+step))
             score += 1;
@@ -268,18 +268,18 @@ void *geneseq_new(t_symbol *s, long argc, t_atom *argv)
     x = (t_geneseq *)object_alloc(geneseq_class);
     atom_setlong(x->generation, 0);
     x->current_population = INIT_POP;
-    
+
     x->m_outlet5 = bangout((t_object *)x);
     x->m_outlet4 = outlet_new((t_object *)x, NULL);
     x->m_outlet3 = intout((t_object *)x);
     x->m_outlet2 = intout((t_object *)x);
     x->m_outlet1 = outlet_new((t_object *)x, NULL);
-    
+
     for (int i = 0; i < SEQ_STEPS; i++)
         atom_setlong(x->target+i, default_target[i]);
-    
+
     seed(x);
-    
+
 	return (x);
 }
 
@@ -302,17 +302,17 @@ int compare_individuals(const void *a, const void *b)
 void unique_sample(int numbers[], int max, int k)
 {
     if (k > max) k = max;
-    
+
     int sample_range[max];
     for (int i = 0; i < max; i++)
         sample_range[i] = i;
-    
+
     int rand_index, tmp;
     for (int i = 0; i < k; i++)
     {
         rand_index = rand() % (max - i);
         numbers[i] = sample_range[rand_index];
-        
+
         tmp = sample_range[max - 1];
         sample_range[max - 1] = numbers[i];
         sample_range[rand_index] = tmp;
