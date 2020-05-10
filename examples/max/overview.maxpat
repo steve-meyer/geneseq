@@ -39,12 +39,63 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-10",
+					"linecount" : 3,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 373.0, 210.0, 243.0, 47.0 ],
+					"presentation_linecount" : 3,
+					"text" : "4) Click on one of the new sequence message boxes to set a new target. Evolve these sequences until convergence."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 373.0, 129.0, 243.0, 60.0 ],
+					"presentation_linecount" : 4,
+					"text" : "3) Click on the 'evolve' message box to move the population generation and output new values. Repeat this step until the last outlet bangs to indicate convergence."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 373.0, 73.0, 243.0, 33.0 ],
+					"presentation_linecount" : 2,
+					"text" : "2) Click on the [button] to see the top scored individual."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 373.0, 15.0, 243.0, 33.0 ],
+					"text" : "1) Click on the 'gettarget' message box to see the default sequence."
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-24",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 243.0, 105.0, 78.875, 22.0 ],
+					"patching_rect" : [ 138.0, 60.0, 78.875, 22.0 ],
 					"text" : "t b l"
 				}
 
@@ -56,7 +107,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 364.0, 62.0, 85.0, 22.0 ],
+					"patching_rect" : [ 259.0, 17.0, 85.0, 22.0 ],
 					"text" : "1 0 3 0 5 0 7 8"
 				}
 
@@ -68,7 +119,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 196.0, 140.0, 43.0, 22.0 ],
+					"patching_rect" : [ 91.0, 95.0, 43.0, 22.0 ],
 					"text" : "evolve"
 				}
 
@@ -80,7 +131,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 116.0, 228.0, 99.0, 22.0 ]
+					"patching_rect" : [ 11.0, 183.0, 99.0, 22.0 ]
 				}
 
 			}
@@ -92,7 +143,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 146.0, 140.0, 24.0, 24.0 ]
+					"patching_rect" : [ 41.0, 95.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -104,7 +155,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 255.25, 228.0, 50.0, 22.0 ]
+					"patching_rect" : [ 150.25, 183.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -116,7 +167,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 314.5, 228.0, 50.0, 22.0 ]
+					"patching_rect" : [ 209.5, 183.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -127,7 +178,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 302.875, 140.0, 87.0, 22.0 ],
+					"patching_rect" : [ 197.875, 95.0, 87.0, 22.0 ],
 					"text" : "prepend target"
 				}
 
@@ -139,7 +190,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 243.0, 62.0, 85.0, 22.0 ],
+					"patching_rect" : [ 138.0, 17.0, 85.0, 22.0 ],
 					"text" : "1 1 1 0 5 5 5 0"
 				}
 
@@ -151,7 +202,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 243.0, 140.0, 56.0, 22.0 ],
+					"patching_rect" : [ 138.0, 95.0, 56.0, 22.0 ],
 					"text" : "gettarget"
 				}
 
@@ -163,7 +214,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 300.0, 262.0, 92.75, 22.0 ]
+					"patching_rect" : [ 195.0, 217.0, 92.75, 22.0 ]
 				}
 
 			}
@@ -175,7 +226,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 433.0, 228.0, 24.0, 24.0 ]
+					"patching_rect" : [ 328.0, 183.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -186,7 +237,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "int", "int", "", "bang" ],
-					"patching_rect" : [ 196.0, 192.0, 256.0, 22.0 ],
+					"patching_rect" : [ 91.0, 147.0, 256.0, 22.0 ],
 					"text" : "geneseq"
 				}
 
